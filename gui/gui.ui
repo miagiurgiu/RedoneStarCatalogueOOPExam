@@ -1,22 +1,24 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
-    <author/>
-    <comment/>
-    <exportmacro/>
-    <class>GUI</class>
-    <widget class="QWidget" name="GUI">
-        <property name="geometry">
-            <rect>
-                <x>0</x>
-                <y>0</y>
-                <width>400</width>
-                <height>300</height>
-            </rect>
-        </property>
-        <property name="windowTitle">
-            <string>GUI</string>
-        </property>
-    </widget>
-    <pixmapfunction/>
-    <connections/>
+ <class>GUI</class>
+ <widget class="QWidget" name="GUI">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>400</width>
+    <height>300</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>GUI</string>
+  </property>
+  <layout class="QVBoxLayout" name="verticalLayout">
+   <item>
+    <widget class="QTableView" name="tableView"/>
+   </item>
+  </layout>
+ </widget>
+ <resources/>
+ <connections/>
 </ui>

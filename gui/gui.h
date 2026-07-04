@@ -12,6 +12,7 @@
 #include "service/Service.h"
 
 
+class StarTableModel;
 QT_BEGIN_NAMESPACE
 namespace Ui { class GUI; }
 QT_END_NAMESPACE
@@ -28,6 +29,7 @@ private:
     Ui::GUI *ui;
     Service& service;
     Astronomer astronomer;
+    StarTableModel* model;
     void connectSignalsAndSlots();
 };
 

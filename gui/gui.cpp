@@ -6,6 +6,7 @@
 
 #include "gui.h"
 #include "ui_GUI.h"
+#include "domain/StarTableModel.h"
 
 
 GUI::GUI(Service& service, const Astronomer& astronomer,QWidget *parent) :
@@ -13,6 +14,8 @@ GUI::GUI(Service& service, const Astronomer& astronomer,QWidget *parent) :
     ui->setupUi(this);
     service.registerObserver(this);
     this->setWindowTitle(QString::fromStdString(astronomer.getName()));
+    model=new StarTableModel{service.getStars(),this};
+    ui->tableView->setModel(model);
     connectSignalsAndSlots();
     GUI::update();
 }
