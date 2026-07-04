@@ -22,3 +22,17 @@ std::vector<Star> Service::getStarsInConstellation(const std::string& constellat
     }
     return result;
 }
+
+void Service::addStar(const std::string &name, const std::string &constellation, int RA, int Dec, int diameter) {
+    if (name.empty())
+        throw std::runtime_error("empty name");
+    if (diameter<=0)
+        throw std::runtime_error("inappropriate diameter");
+    for (const auto& s:repo.getStars()) {
+        if (s.getName()==name)
+            throw std::runtime_error("another one with the same name");
+    }
+    Star newStar{name,constellation,RA,Dec,diameter};
+    repo.addStar(newStar);
+    notify();
+}

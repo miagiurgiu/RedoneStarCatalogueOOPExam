@@ -19,6 +19,7 @@ public:
     std::vector<Astronomer> getAstronomers() const;
     std::vector<Star> getStars() const;
     std::vector<Star> getStarsInConstellation(const std::string& constellation) const;
+    void addStar(const std::string& name, const std::string& constellation,int RA, int Dec, int diameter);
 };
 
 

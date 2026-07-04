@@ -8,6 +8,8 @@
 #include "ui_GUI.h"
 #include "domain/StarTableModel.h"
 #include <QCheckBox>
+#include <QMessageBox>
+#include <QPushButton>
 
 GUI::GUI(Service& service, const Astronomer& astronomer,QWidget *parent) :
     QWidget(parent), ui(new Ui::GUI),service{service},astronomer{astronomer} {
@@ -31,6 +33,7 @@ void GUI::update() {
 
 void GUI::connectSignalsAndSlots() {
     connect(ui->checkBox,&QCheckBox::toggled,this,&GUI::updateFields);
+    connect(ui->addButton,&QPushButton::clicked,this,&GUI::addStar);
 }
 
 void GUI::updateFields() {
@@ -40,4 +43,17 @@ void GUI::updateFields() {
     else
         stars=service.getStars();
     model->updateData(stars);
+}
+
+void GUI::addStar() {
+    std::string name=ui->nameLineEdit->text().toStdString();
+    int ra=ui->RALineEdit->text().toInt();
+    int dec=ui->DecLineEdit->text().toInt();
+    int diameter=ui->diameterLineEdit->text().toInt();
+    try {
+        service.addStar(name,astronomer.getConstellation(),ra,dec,diameter);
+    }
+    catch (const std::exception& e) {
+        QMessageBox::critical(this,"ERROR",e.what());
+    }
 }

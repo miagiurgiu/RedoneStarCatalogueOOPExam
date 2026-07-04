@@ -32,6 +32,7 @@ private:
     StarTableModel* model;
     void connectSignalsAndSlots();
     void updateFields();
+    void addStar();
 };
 
 

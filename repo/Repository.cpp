@@ -66,3 +66,8 @@ void Repository::save() {
         fout<<s.toString()<<"\n";
     }
 }
+
+void Repository::addStar(const Star &s) {
+    stars.push_back(s);
+    save();
+}

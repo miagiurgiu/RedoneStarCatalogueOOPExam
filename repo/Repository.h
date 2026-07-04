@@ -23,6 +23,7 @@ public:
     void loadAstronomers();
     void loadStars();
     void save();
+    void addStar(const Star& s);
 };
 
 
