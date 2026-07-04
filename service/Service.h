@@ -18,6 +18,7 @@ public:
     Service(Repository& repo);
     std::vector<Astronomer> getAstronomers() const;
     std::vector<Star> getStars() const;
+    std::vector<Star> getStarsInConstellation(const std::string& constellation) const;
 };
 
 

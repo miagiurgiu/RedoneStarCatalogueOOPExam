@@ -7,7 +7,7 @@
 #include "gui.h"
 #include "ui_GUI.h"
 #include "domain/StarTableModel.h"
-
+#include <QCheckBox>
 
 GUI::GUI(Service& service, const Astronomer& astronomer,QWidget *parent) :
     QWidget(parent), ui(new Ui::GUI),service{service},astronomer{astronomer} {
@@ -26,9 +26,18 @@ GUI::~GUI() {
 }
 
 void GUI::update() {
-    return;
+    updateFields();
 }
 
 void GUI::connectSignalsAndSlots() {
-    return;
+    connect(ui->checkBox,&QCheckBox::toggled,this,&GUI::updateFields);
+}
+
+void GUI::updateFields() {
+    std::vector<Star> stars;
+    if (ui->checkBox->isChecked())
+        stars=service.getStarsInConstellation(astronomer.getConstellation());
+    else
+        stars=service.getStars();
+    model->updateData(stars);
 }

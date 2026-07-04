@@ -31,6 +31,7 @@ private:
     Astronomer astronomer;
     StarTableModel* model;
     void connectSignalsAndSlots();
+    void updateFields();
 };
 
 

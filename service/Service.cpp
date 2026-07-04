@@ -13,3 +13,12 @@ std::vector<Astronomer> Service::getAstronomers() const {
 std::vector<Star> Service::getStars() const {
     return repo.getStars();
 }
+
+std::vector<Star> Service::getStarsInConstellation(const std::string& constellation) const {
+    std::vector<Star> result;
+    for (const auto& s:repo.getStars()) {
+        if (s.getConstellation()==constellation)
+            result.push_back(s);
+    }
+    return result;
+}
