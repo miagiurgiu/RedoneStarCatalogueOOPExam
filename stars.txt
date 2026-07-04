@@ -1,8 +1,8 @@
-Star99,bellatrix,3,5,6
-Star1004,andromeda,2,2,1
-star99x40,Leo,80,90,10
-star1,Aquarius,23,11,4
-NEWW,Leo,70,70,3
-Star49,bellatrix,49,50,6
-star101,Aquarius,60,70,2
-Star14,andromeda,9,9,11
+Star1,andromeda,2,2,1
+Star5,andromeda,9,9,11
+star2,aquarius,23,11,4
+star3,aquarius,60,70,2
+Star8,bellatrix,3,5,6
+Star6,bellatrix,49,50,6
+star9,leo,80,90,10
+NEWW,leo,70,70,3

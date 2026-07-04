@@ -14,5 +14,6 @@ int main(int argc,char* argv[]) {
         gui->show();
         windows.push_back(gui);
     }
+    repo.save();
     return app.exec();
 }

@@ -61,7 +61,9 @@ void Repository::loadStars() {
 
 void Repository::save() {
     std::ofstream fout(starsFile);
-    auto stars=getStars();
+    std::sort(stars.begin(),stars.end(),[](const Star& s1, const Star& s2) {
+        return s1.getConstellation()<s2.getConstellation();
+    });
     for (const auto& s:stars) {
         fout<<s.toString()<<"\n";
     }
