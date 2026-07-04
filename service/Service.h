@@ -20,6 +20,7 @@ public:
     std::vector<Star> getStars() const;
     std::vector<Star> getStarsInConstellation(const std::string& constellation) const;
     void addStar(const std::string& name, const std::string& constellation,int RA, int Dec, int diameter);
+    std::vector<Star> getStarsMatching(const std::string& text);
 };
 
 

@@ -36,3 +36,14 @@ void Service::addStar(const std::string &name, const std::string &constellation,
     repo.addStar(newStar);
     notify();
 }
+
+std::vector<Star> Service::getStarsMatching(const std::string &text) {
+    std::vector<Star> result;
+    for (const auto& s:repo.getStars()) {
+        if (s.getName().find(text)!=std::string::npos) {
+            result.push_back(s);
+        }
+    }
+    return result;
+}
+

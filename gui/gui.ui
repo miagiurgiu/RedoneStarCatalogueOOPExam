@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>400</width>
-    <height>403</height>
+    <width>414</width>
+    <height>528</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -77,6 +77,12 @@
       <string>View</string>
      </property>
     </widget>
+   </item>
+   <item>
+    <widget class="QLineEdit" name="searchLineEdit"/>
+   </item>
+   <item>
+    <widget class="QListWidget" name="searchListWidget"/>
    </item>
   </layout>
  </widget>

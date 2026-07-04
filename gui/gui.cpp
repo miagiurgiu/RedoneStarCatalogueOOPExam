@@ -10,7 +10,7 @@
 #include <QCheckBox>
 #include <QMessageBox>
 #include <QPushButton>
-
+#include <QListWidget>
 #include "constellation.h"
 
 GUI::GUI(Service& service, const Astronomer& astronomer,QWidget *parent) :
@@ -37,6 +37,7 @@ void GUI::connectSignalsAndSlots() {
     connect(ui->checkBox,&QCheckBox::toggled,this,&GUI::updateFields);
     connect(ui->addButton,&QPushButton::clicked,this,&GUI::addStar);
     connect(ui->viewButton,&QPushButton::clicked,this,&GUI::view);
+    connect(ui->searchLineEdit,&QLineEdit::textChanged,this,&GUI::search);
 }
 
 void GUI::updateFields() {
@@ -72,4 +73,15 @@ void GUI::view() {
     //auto newConstellation=new Constellation{service,selectedStar,this}; // WITHOUT "THIS" !!!
     auto newConstellation=new Constellation{service,selectedStar};
     newConstellation->show();
+}
+
+void GUI::search() {
+    ui->searchListWidget->clear();
+    std::string text=ui->searchLineEdit->text().toStdString();
+    if (text.empty())
+        return;
+    auto matchingStars=service.getStarsMatching(text);
+    for (const auto& star:matchingStars) {
+        ui->searchListWidget->addItem(QString::fromStdString(star.toString()));
+    }
 }

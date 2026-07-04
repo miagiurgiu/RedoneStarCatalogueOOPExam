@@ -34,6 +34,7 @@ private:
     void updateFields();
     void addStar();
     void view();
+    void search();
 };
 
 
