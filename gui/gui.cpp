@@ -11,6 +11,8 @@
 #include <QMessageBox>
 #include <QPushButton>
 
+#include "constellation.h"
+
 GUI::GUI(Service& service, const Astronomer& astronomer,QWidget *parent) :
     QWidget(parent), ui(new Ui::GUI),service{service},astronomer{astronomer} {
     ui->setupUi(this);
@@ -34,6 +36,7 @@ void GUI::update() {
 void GUI::connectSignalsAndSlots() {
     connect(ui->checkBox,&QCheckBox::toggled,this,&GUI::updateFields);
     connect(ui->addButton,&QPushButton::clicked,this,&GUI::addStar);
+    connect(ui->viewButton,&QPushButton::clicked,this,&GUI::view);
 }
 
 void GUI::updateFields() {
@@ -56,4 +59,17 @@ void GUI::addStar() {
     catch (const std::exception& e) {
         QMessageBox::critical(this,"ERROR",e.what());
     }
+}
+
+void GUI::view() {
+    QModelIndexList selection=ui->tableView->selectionModel()->selectedIndexes();
+    if (selection.empty())
+        return;
+    int row=selection.at(0).row();
+    auto stars=service.getStars();
+    auto selectedStar=stars[row];
+
+    //auto newConstellation=new Constellation{service,selectedStar,this}; // WITHOUT "THIS" !!!
+    auto newConstellation=new Constellation{service,selectedStar};
+    newConstellation->show();
 }

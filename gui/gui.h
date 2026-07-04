@@ -33,6 +33,7 @@ private:
     void connectSignalsAndSlots();
     void updateFields();
     void addStar();
+    void view();
 };
 
 
