@@ -1,0 +1,4 @@
+Star99,bellatrix,3,5,6
+Star1004,andromeda,2,2,1
+star99x40,Leo,80,90,10
+star1,Aquarius,23,11,4
